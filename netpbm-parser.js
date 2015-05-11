@@ -1,9 +1,9 @@
 var NetPBM = (function() {
     "use strict";
 
-    var NetPBMImage = function(data) {
+    var NetPBMImage = function(contents) {
         var exp = /^(\S+)\s+(\#.*?\n)*\s*(\d+)\s+(\d+)\s+(\d+)?\s*/,
-            match = data.match(exp);
+            match = contents.match(exp);
 
         if (match) {
             var width = this.width = parseInt(match[3], 10),
@@ -46,12 +46,10 @@ var NetPBM = (function() {
 
                 default:
                     throw new TypeError('Sorry, your file format is not supported. [' + match[1] + ']');
-                    return false;
             }
 
         } else {
             throw new TypeError('Sorry, file does not appear to be a Netpbm file.');
-            return false;
         }
     };
 
@@ -214,6 +212,6 @@ var NetPBM = (function() {
         load : function(data) {
             return new NetPBMImage(data);
         }
-    }
+    };
 
 })();

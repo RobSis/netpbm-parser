@@ -10,7 +10,8 @@ var NetPBM = (function() {
                 height = this.height = parseInt(match[4], 10),
                 maxVal = parseInt(match[5], 10),
                 bytes = (maxVal < 256)? 1 : 2,
-                data = data.substr(match[0].length);
+                data = data.substr(match[0].length),
+                type = this.type = match[1];
 
             switch (match[1]) {
                 case 'P1':
